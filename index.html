@@ -215,7 +215,6 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
 <div class="tools no-print">
   <button onclick="window.print()" title="No diálogo, escolha 'Salvar como PDF'">⬇ Baixar PDF</button>
   <button id="btnEdit" onclick="toggleEdit()">✏️ Editar</button>
-  <button class="gh" id="btnSave" onclick="downloadHTML()" title="Baixar HTML com edições">💾 HTML</button>
   <button class="gh" onclick="resetEdits()" title="Apaga edições e volta ao original">↺ Resetar</button>
   <span class="status" id="status"></span>
 </div>
@@ -649,37 +648,6 @@ function onInput(e) {
 // Status text
 function setStatus(msg) {
   document.getElementById('status').textContent = msg;
-}
-
-// Download HTML with current edits baked in
-function downloadHTML() {
-  // Clone the document, remove editing UI, return clean HTML
-  const clone = document.documentElement.cloneNode(true);
-  // Remove tools, scripts, and edit-related attributes
-  clone.querySelectorAll('.tools, script').forEach(el => el.remove());
-  clone.querySelectorAll('[data-edit]').forEach(el => {
-    el.removeAttribute('data-edit');
-    el.removeAttribute('contenteditable');
-    el.removeAttribute('spellcheck');
-  });
-  // Strip the editing-related <style> we injected (keeps original CSS)
-  clone.querySelectorAll('style').forEach(st => {
-    if (st.textContent.includes('Editing mode UI')) st.remove();
-  });
-  clone.querySelector('body')?.classList.remove('editing');
-  const html = '<!DOCTYPE html>\n' + clone.outerHTML;
-  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  const ts = new Date().toISOString().slice(0,10);
-  a.download = `identity-levels-editado-${ts}.html`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  setStatus('✓ HTML baixado');
-  setTimeout(() => setStatus(''), 2000);
 }
 
 // Cleanup before print (in case user uses Ctrl+P or "Baixar PDF" button)
