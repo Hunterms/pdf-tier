@@ -230,7 +230,7 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
   </div>
   <div class="title-block">
     <h1>Produto em<br><em>3 fases.</em></h1>
-    <div class="sub">Capabilities por feature, por fase do produto. Foco no <strong>Sou eu!</strong> (autenticação universal) e no <strong>CPF Seguro</strong> (pausa e despausa). A pessoa de confiança aparece como camada de delegação em ambas as features.</div>
+    <div class="sub">Funcionalidades por fase do produto. Decupagem da autenticação universal e da habilitação da função de suspensão do <strong>CPF</strong> (pausa e reativação).<br>A pessoa de confiança aparece como camada de delegação.<br><br>Futura evolução é a suspensão de PRODUTOS do CPF por parceiro e INTEROPERABILIDADE entre parceiros.</div>
   </div>
   <div class="meta">
     <div><strong>Maio 2026 · v3</strong><br>Equipe de Produto</div>
@@ -249,8 +249,8 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
   </div>
 
   <span class="tag blue">Estrutura do produto</span>
-  <h2>3 fases · cada uma adiciona <em>capabilities.</em></h2>
-  <p class="lead">A entrada do produto já exige <strong>celular validado por SMS</strong>. Não existe nível "só CPF e senha". A cada fase, uma verificação nova é adicionada e libera funcionalidades de maior valor. O usuário sobe quando quiser, no ritmo dele.</p>
+  <h2>3 fases · cada uma adiciona <em>funcionalidades.</em></h2>
+  <p class="lead">A fase de entrada do produto já exige <strong>celular validado por SMS</strong>. Não existe nível "só CPF e senha". A cada fase, uma verificação nova é adicionada para liberação de funcionalidades de maior valor. O usuário sobe quando quiser, no ritmo dele ou demandado pelo parceiro.</p>
 
   <div class="phase-grid">
 
@@ -261,12 +261,12 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
       </div>
       <div class="info">
         <div class="name">Cadastrado</div>
-        <div class="sub">Entrada · gov.br Prata</div>
-        <div class="req"><strong>Coleta:</strong> CPF, senha de recuperação (teclado embaralhado) e celular validado por SMS.</div>
+        <div class="sub">ENTRADA ·</div>
+        <div class="req"><strong>Coleta:</strong> CPF, senha de recuperação (teclado de ambiguidade) e celular validado por SMS.</div>
       </div>
       <div class="compare">
         <div class="label">Comparável a</div>
-        <div class="val">Login forte com SMS. <strong>Aceito em e-commerce, varejo e programas de fidelidade que toleram autenticação simples.</strong></div>
+        <div class="val">Login forte com SMS. <strong>Aceito em e-commerce, varejo e programas de fidelidade que admitem autenticação simples.</strong></div>
       </div>
     </div>
 
@@ -277,8 +277,8 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
       </div>
       <div class="info">
         <div class="name">Biométrico</div>
-        <div class="sub">Face match · gov.br Prata+</div>
-        <div class="req"><strong>+ Coleta:</strong> biometria facial com prova de vida (selfie ao vivo).</div>
+        <div class="sub">FACE MATCH ·</div>
+        <div class="req"><strong>Coleta:</strong> biometria facial com prova de vida (selfie ao vivo).</div>
       </div>
       <div class="compare">
         <div class="label">Comparável a</div>
@@ -293,8 +293,8 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
       </div>
       <div class="info">
         <div class="name">Completo</div>
-        <div class="sub">Documento · gov.br Ouro</div>
-        <div class="req"><strong>+ Coleta:</strong> CNH ou RG. O match facial-documento é automático (a biometria já foi coletada na Fase 2).</div>
+        <div class="sub">DOCUMENTO ·</div>
+        <div class="req"><strong>Coleta ou importação:</strong> CNH ou RG. O match facial-documento é automático (a biometria já foi coletada na Fase 2).</div>
       </div>
       <div class="compare">
         <div class="label">Comparável a</div>
@@ -304,19 +304,13 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
 
   </div>
 
-  <p class="lead" style="font-size:10.5pt;margin-top:6px;margin-bottom:12px"><strong>Princípio:</strong> o usuário pode parar em qualquer fase e voltar depois. O onboarding é conversacional e checkpointed: cada fase é um ato no chat. Cada feature do app respeita a fase atual via campo <code style="background:#F0F2F7;padding:1px 6px;border-radius:4px;font-size:9pt">min_user_phase</code> definido pelo parceiro.</p>
+  <p class="lead" style="font-size:10.5pt;margin-top:6px;margin-bottom:12px"><strong>Princípio:</strong> o usuário pode parar em qualquer fase e voltar depois. O onboarding é conversacional e checkpointed: cada fase é um ato no chat. Cada funcionalidade do app respeita a fase atual via campo <code style="background:#F0F2F7;padding:1px 6px;border-radius:4px;font-size:9pt">min_user_phase</code> definido pelo parceiro.</p>
 
   <div class="critical-rule" style="background:#FEE2E2;border:1px solid #FCA5A5;border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:10pt;color:#7F1D1D;line-height:1.5">
-    <strong style="font-weight:800">🚨 Regra crítica do CPF Seguro:</strong> a feature inteira (notificações, pausa, despausa e pessoa de confiança) só destrava na Fase 3. O CPF Seguro tem peso jurídico (suspende contratos, operações financeiras, acessos em todos os parceiros conectados) e exige documento oficial pra ser ativado.
+    <strong style="font-weight:800">🚨 Regra crítica do CPF SEGURO:</strong> Notificações, pausa, liberação e pessoa de confiança, etc, só funcionam em sua plenitude na Fase 3. O CPF SEGURO dá suporte a transações com implicações jurídicas (suspende contratos, operações financeiras, acessos em todos os parceiros conectados) e exige documento oficial para ser ativado.
   </div>
 
-  <div class="dep-callout">
-    <div class="label">⚠ Dependência fundamental</div>
-    <div class="text">
-      <strong>Sou eu! e CPF Seguro são plataformas. O valor entregue ao usuário é proporcional à adesão dos parceiros.</strong> A pausa do CPF só suspende serviços <strong>nos parceiros integrados via SDK</strong>. O Sou eu! só autentica em sites e apps parceiros. Sem rede ativa, o app não pausa nada e não autentica em lugar nenhum.<br><br>
-      <strong>Implicação estratégica:</strong> o investimento em BD, integração de SDK, contratos e onboarding técnico de parceiros é tão crítico quanto o investimento no produto. Cada fase só destrava valor real quando há parceiros que aceitam aquela fase como suficiente pras suas operações.
-    </div>
-  </div>
+  
 
   <div class="footer-page">
     <span>CPF SEGURO · <strong>Confidencial</strong></span>
@@ -339,14 +333,14 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
 
   <div class="feature-intro">
     <div class="name">Sou eu!</div>
-    <div class="desc">Cada tentativa de login, transação ou contrato em qualquer parceiro integrado chega no app do usuário pra ele confirmar. <strong>São três métodos de autenticação: Sim/Não, Código visual e Facial.</strong> A fase do usuário define quais métodos estão disponíveis e quais operações cada parceiro pode pedir.<br><br><span style="font-size:9.5pt;color:#B45309;background:#FEF3C7;padding:2px 8px;border-radius:6px;font-weight:700">⚠ Requer adesão do parceiro</span> · cada parceiro decide qual fase mínima aceita.</div>
+    <div class="desc">Logins, transações, contato para autenticação ou para validação transacional, para qualquer parceiro integrado, chega no app do usuário na forma de um push.<br><strong>São três métodos de autenticação: Sim/Não, Dezenas e Verificação facial com prova de vida.</strong><br>O nível de onboarding do usuário define quais métodos estão disponíveis e quais operações cada parceiro pode pedir.<br><br><span style="font-size:9.5pt;color:#B45309;background:#FEF3C7;padding:2px 8px;border-radius:6px;font-weight:700">⚠ Requer adesão do parceiro</span> · cada parceiro decide qual fase mínima aceita.</div>
   </div>
 
   <div class="tier-row" data-p="1">
     <div class="lvl-badge"><span class="lvl-num">1</span>Cadastrado</div>
     <div class="body">
       <div class="head">Aprovação Sim/Não em e-commerce, varejo e fidelidade.</div>
-      <div class="body-text">Com CPF, senha e celular validado, o usuário já autentica em parceiros que aceitam Fase 1. Cada tentativa chega como push no app. Um toque em "Sim" libera. Sem digitar senha em site externo, sem SMS, sem fricção.</div>
+      <div class="body-text">Com CPF, senha e celular validado, o usuário já se autentica em parceiros que aceitam Fase 1. Cada login ou verificação chega como push no app. Um toque em "Sim" libera. Sem digitar senha em site externo, sem SMS, sem fricção.</div>
       <ul>
         <li>Aprovação Sim/Não em e-commerce, varejo e programas de fidelidade</li>
         <li>Push em toda tentativa de login que usa o CPF do usuário</li>
@@ -354,7 +348,7 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
         <li class="locked">Código visual e Facial · destravam na Fase 2</li>
         <li class="locked">Autorização de transação bancária · exige Fase 3</li>
       </ul>
-      <div class="example"><strong>Exemplo:</strong> Ana entra na Amazon. No lugar de digitar senha e esperar SMS, ela vê o push no app: <em>"Foi você? Amazon · login agora."</em> Toca "Sim". Pronto.</div>
+      <div class="example"><strong>Exemplo:</strong> Ana quer logar no eCommerce da Americanas. No lugar de digitar e-mail e senha, ela vê o push no app: <em>"É você? Americanas · login agora."</em> Toca "Sim". Pronto.</div>
     </div>
   </div>
 
@@ -362,7 +356,7 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
     <div class="lvl-badge"><span class="lvl-num">2</span>Biométrico</div>
     <div class="body">
       <div class="head">+ Código visual e biometria facial. Autenticação reforçada.</div>
-      <div class="body-text">Com a biometria facial cadastrada (selfie com prova de vida), os outros dois métodos do Sou eu! ficam disponíveis. O <strong>Código visual</strong> mata phishing de verdade: o parceiro mostra um número, o app pede o mesmo número, e nenhum atacante consegue interpor. O <strong>Facial</strong> autoriza com biometria do usuário. Os três métodos cobrem operações de risco médio fora do mundo bancário.</div>
+      <div class="body-text">Com a biometria facial cadastrada (selfie com prova de vida), os outros dois métodos do Sou eu! ficam disponíveis. O <strong>Código visual pode inibir</strong> o phishing de forma definitiva: o parceiro mostra um número, o app pede o mesmo número, e nenhum atacante consegue se interpor. A verificação <strong>Facial</strong> autoriza com biometria do usuário. Os três métodos cobrem operações de risco médio fora do mundo bancário.</div>
       <ul>
         <li>Tudo da Fase 1</li>
         <li>Código visual de 2FA (anti-phishing real, estilo Microsoft Authenticator)</li>
@@ -371,7 +365,7 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
         <li class="locked">Transação bancária (PIX, transferência, contratação) · exige Fase 3</li>
         <li class="locked">Pessoa de confiança · destrava só na Fase 3</li>
       </ul>
-      <div class="example"><strong>Exemplo:</strong> Ana confirma compra de R$ 800 em uma carteira digital. O parceiro mostra <em>"42"</em> na tela. O app pergunta <em>"Qual número aparece no site?"</em> e mostra três opções: 42, 17, 89. Ana toca 42 e aprova com FaceID. Phishing morre aqui.</div>
+      <div class="example"><strong>Exemplo:</strong> Ana confirma compra de R$ 800 utilizando uma carteira digital com meio de pagamento tokenizado. O parceiro mostra <em>"42"</em> na tela. O app pergunta <em>"Qual número aparece no site?"</em> e mostra três opções: 42, 17, 89. Ana toca 42 e aprova com FaceID.</div>
     </div>
   </div>
 
@@ -379,7 +373,7 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
     <div class="lvl-badge"><span class="lvl-num">3</span>Completo</div>
     <div class="body">
       <div class="head">+ Transação bancária autorizada · sistemas críticos · contratos.</div>
-      <div class="body-text">Com o documento oficial coletado, o cadastro ganha peso jurídico. <strong>Aqui o Sou eu! passa a autorizar transação bancária:</strong> PIX em qualquer valor, transferências, contratação de produto financeiro, login forte em apps bancários onde o usuário já é cliente. A mesma autenticação libera contratos digitais, abertura de conta nova e sistemas governamentais.</div>
+      <div class="body-text">Com o documento oficial coletado, o cadastro ganha peso jurídico. <strong>Aqui o Sou eu! pode compor a autorização de transações bancárias:</strong> PIX, transferências, contratação de produto financeiro, login forte em apps bancários onde o usuário já é cliente. A mesma autenticação libera contratos digitais, abertura de conta nova e pode, futuramente, se integrar a sistemas governamentais.</div>
       <ul>
         <li>Tudo da Fase 2</li>
         <li><strong>Autorização de transação bancária</strong> (PIX, transferência, pagamento, contratação)</li>
@@ -390,7 +384,7 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
         <li>Sistemas críticos (e-CAC Receita, sistemas Top 5 bancos, gov)</li>
         <li><strong>Pessoa de confiança liberada</strong> (ver Página 5)</li>
       </ul>
-      <div class="example"><strong>Exemplo:</strong> Ana é cliente do Banco Aurora. Pra um PIX de R$ 4.000, ela recebe o push do CPF SEGURO e aprova com FaceID. A transferência roda em menos de 2 segundos. Outro caso: Ana assina contrato de aluguel digital. O Sou eu! autentica, gera assinatura criptográfica vinculada ao documento conferido e o contrato sai com validade jurídica plena. Sem cartório.</div>
+      <div class="example"><strong>Exemplo:</strong> Ana é cliente do Banco Aurora. Para um PIX de R$ 4.000, ela recebe o push do CPF SEGURO e aprova com FaceID (configurações gerenciadas pelo cliente e pela IF). Outro caso: Ana assina contrato de aluguel digital. O Sou eu! autentica, gera assinatura criptográfica vinculada ao documento conferido e o contrato sai com validade jurídica plena. Sem cartório.</div>
     </div>
   </div>
 
@@ -411,25 +405,25 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
   </div>
 
   <span class="tag blue">Feature 2</span>
-  <h2>CPF Seguro — <em>pausar e despausar.</em></h2>
+  <h2>CPF SEGURO — <em>pausar e reativar.</em></h2>
 
   <div class="feature-intro">
-    <div class="name">CPF Seguro</div>
-    <div class="desc">Em caso de roubo, fraude ou qualquer apuro, <strong>um toque em PAUSAR CPF</strong> comunica a emergência a todos os parceiros conectados. Transações, acessos e novos contratos ficam suspensos até o usuário reativar. A pessoa de confiança também pode pausar e despausar por ele se ele ficar sem celular ou em situação de risco.<br><br><span style="font-size:9.5pt;color:#B45309;background:#FEF3C7;padding:2px 8px;border-radius:6px;font-weight:700">⚠ A pausa só atinge parceiros integrados</span> · quanto mais parceiros via SDK, maior o alcance real do botão.</div>
+    <div class="name">CPF SEGURO</div>
+    <div class="desc">Em caso de roubo, fraude ou qualquer apuro, <strong>um toque em PAUSAR CPF</strong> comunica a emergência a todos os parceiros conectados. Transações, acessos e novos contratos ficam suspensos até o usuário reativar. A pessoa de confiança também pode pausar e reativar por ele se ele ficar sem celular ou em situação de risco.<br><br>O "broadcast" fica disponível para consulta por API. O parceiro (integrado ou autorizado) pode inquirir o status de um CPF e até mesmo seu score de segurança (instantâneo, médio e total).<br><br>CPF SEGURO habilita a interoperabilidade entre parceiros — uma falha de segurança identificada em um parceiro pode, via CPF, impactar todos os demais.<br><br><span style="font-size:9.5pt;color:#B45309;background:#FEF3C7;padding:2px 8px;border-radius:6px;font-weight:700">⚠ A pausa só atinge parceiros integrados</span> · quanto mais parceiros via SDK, maior o alcance real do botão.</div>
   </div>
 
   <div class="tier-row" data-p="1" data-locked="true">
     <div class="lvl-badge"><span class="lvl-num">1</span>Cadastrado</div>
     <div class="body">
       <div class="head">Feature indisponível na Fase 1.</div>
-      <div class="body-text">O CPF Seguro é uma ação de peso jurídico: suspende contratos vigentes, transações em curso e acessos em todos os parceiros conectados. Por isso, a feature inteira (incluindo notificações de tentativa de uso do CPF) só destrava quando o cadastro está plenamente conferido contra documento oficial.</div>
+      <div class="body-text">O CPF SEGURO pode suspender contratos vigentes, transações em curso e acessos em todos os parceiros conectados. Por isso esta funcionalidade (incluindo notificações de tentativa de uso do CPF) só destrava quando o cadastro está plenamente conferido contra documento oficial.</div>
       <ul>
         <li class="locked">Notificações de tentativa de uso do CPF · exigem Fase 3</li>
         <li class="locked">Pausar CPF · exige Fase 3</li>
-        <li class="locked">Despausar CPF · exige Fase 3</li>
+        <li class="locked">Reativar CPF · exige Fase 3</li>
         <li class="locked">Cadastrar pessoa de confiança · exige Fase 3</li>
       </ul>
-      <div class="locked-note"><strong>Por que tudo bloqueado?</strong> Sem documento oficial, o sistema não tem como vincular juridicamente a pausa ao titular do CPF. Liberar a ação sem essa amarra abre brecha pra abuso (alguém pausando o CPF de terceiro). A Fase 1 é só a porta de entrada do produto.</div>
+      <div class="locked-note"><strong>Por que tudo bloqueado?</strong> Sem documento oficial, o sistema não tem como vincular juridicamente a pausa ao titular do CPF. Liberar a ação sem essa amarra abre brecha para abuso (alguém suspendendo o CPF de terceiro, ou sob coação imediata). A Fase 1 é só a porta de entrada do produto.</div>
     </div>
   </div>
 
@@ -437,14 +431,14 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
     <div class="lvl-badge"><span class="lvl-num">2</span>Biométrico</div>
     <div class="body">
       <div class="head">Feature ainda indisponível na Fase 2.</div>
-      <div class="body-text">A biometria facial destrava o Sou eu! pra autenticação reforçada, mas <strong>não destrava o CPF Seguro</strong>. Pausar e despausar continuam exigindo Fase 3. O motivo é o mesmo: peso jurídico da ação e necessidade de vínculo com documento oficial.</div>
+      <div class="body-text">A biometria facial destrava o Sou eu! para autenticação reforçada, mas <strong>não destrava o CPF SEGURO</strong>. Pausar e reativar continuam exigindo Fase 3. O motivo é o mesmo: peso jurídico da ação e necessidade de vínculo com documento oficial.</div>
       <ul>
         <li class="locked">Notificações de tentativa de uso do CPF · exigem Fase 3</li>
         <li class="locked">Pausar CPF · exige Fase 3</li>
-        <li class="locked">Despausar CPF · exige Fase 3</li>
+        <li class="locked">Reativar CPF · exige Fase 3</li>
         <li class="locked">Cadastrar pessoa de confiança · exige Fase 3</li>
       </ul>
-      <div class="example"><strong>Exemplo:</strong> Ana fez biometria, usa Sou eu! pra autenticar em fintechs leves. Pra preparar o "botão de pânico" do CPF Seguro, ela ainda precisa enviar o documento e completar a Fase 3.</div>
+      <div class="example"><strong>Exemplo:</strong> Ana fez biometria, usa Sou eu! para autenticar em fintechs. Para ativar o "botão de pânico" do CPF SEGURO, ela ainda precisa enviar o documento e completar a Fase 3.</div>
     </div>
   </div>
 
@@ -452,19 +446,19 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
     <div class="lvl-badge"><span class="lvl-num">3</span>Completo</div>
     <div class="body">
       <div class="head">🚨 Feature inteira ativa. Botão de pânico, alertas e pessoa de confiança.</div>
-      <div class="body-text"><strong>Tudo do CPF Seguro destrava aqui.</strong> O usuário começa a receber as notificações de tentativa de uso do CPF dele em qualquer parceiro integrado, ganha o botão de pânico pra pausar tudo num toque, pode despausar quando quiser e libera a delegação pra pessoa de confiança. Cada evento entra no cofre jurídico do usuário com timestamp, assinatura criptográfica e biometria.</div>
+      <div class="body-text"><strong>Todas as funcionalidade do CPF SEGURO habilitadas.</strong> O usuário começa a receber as notificações de tentativa de uso do CPF de qualquer parceiro integrado que habilite a comunicação, habilita o botão de pânico para pausar tudo em um toque, pode reativar quando quiser e libera a delegação para pessoa de confiança.<br>Cada evento entra no cofre jurídico do usuário com timestamp, assinatura criptográfica e biometria.</div>
       <ul>
         <li>Notificações em tempo real de tentativa de uso do CPF em qualquer parceiro</li>
         <li>Histórico completo das tentativas visível no app</li>
         <li><strong>🚨 Pausar CPF</strong> · botão de pânico em um toque + FaceID</li>
-        <li><strong>Despausar CPF</strong> · reativa a vida digital quando o usuário quiser</li>
-        <li>Pessoa de confiança ATIVA · pode pausar e despausar pelo usuário (ela também precisa estar na Fase 3)</li>
-        <li>Pausa alcança gerente bancário, contratos digitais ativos, e-CAC</li>
+        <li><strong>Reativar CPF</strong> · reativa a vida digital quando o usuário quiser</li>
+        <li>Pessoa de confiança ATIVA · pode pausar e reativar pelo usuário (ela também precisa estar na Fase 3)</li>
+        <li>Pausa alcança sistemas bancários, contratos digitais ativos, novos cadastros e pode, futuramente, se integrar a sistemas do Governo</li>
         <li>Escopo granular pra pessoa de confiança:
           <span style="display:block;color:#5C6478;margin-top:4px">— "Maria pode pausar TUDO"<br>— "Pai pode pausar só novos cartões e contratos"<br>— "Filho pode pausar só varejo e farmácia"</span></li>
         <li>Cofre jurídico: cada evento registrado com timestamp, assinatura cripto e biometria</li>
       </ul>
-      <div class="example"><strong>Exemplo 1 · pessoa de confiança:</strong> Ana é assaltada e perde o celular. Maria (Fase 3) abre o app dela, toca "Pausar CPF de Ana" e aprova com a própria biometria. Em menos de 5 segundos, todos os parceiros conectados bloqueiam ações no CPF de Ana.<br><br><strong>Exemplo 2 · você mesmo:</strong> Ana recupera o celular, abre o CPF SEGURO, toca "Despausar" e aprova com FaceID. A vida digital dela volta a operar imediatamente.</div>
+      <div class="example"><strong>Exemplo 1 · pessoa de confiança:</strong> Ana é assaltada e perde o celular. Maria (Fase 3) abre o app dela, toca "Pausar CPF de Ana" e aprova com a própria biometria. Em menos de 5 segundos, todos os parceiros conectados bloqueiam ações no CPF de Ana.<br><br><strong>Exemplo 2 · você mesmo:</strong> Ana recupera o celular, abre o CPF SEGURO, toca "Reativar" e aprova com FaceID. A vida digital dela volta a operar imediatamente.</div>
     </div>
   </div>
 
@@ -486,12 +480,12 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
 
   <span class="tag dark">Camada transversal</span>
   <h2>Pessoa de confiança — <em>delegação humana segura.</em></h2>
-  <p class="lead">A pessoa de confiança aparece em ambas as features (<strong>Sou eu!</strong> e <strong>CPF Seguro</strong>) e só pode ser cadastrada quando o usuário está na <strong>Fase 3</strong>. O motivo é direto: delegar autenticação e pausa do CPF é uma decisão jurídica relevante e exige cadastro plenamente conferido contra documento. Ela <strong>nunca</strong> tem acesso ao app do usuário. Opera pelo próprio app, aprovando ações com a biometria dela.</p>
+  <p class="lead">A pessoa de confiança aparece em ambas as funcionalidades (<strong>Sou eu!</strong> e <strong>CPF SEGURO</strong>) e só pode ser cadastrada quando o usuário estiver na <strong>Fase 3</strong>. O motivo é direto: delegar autenticação e pausa do CPF é uma ação com implicações relevantes que exige cadastro plenamente conferido contra documento. A pessoa de confiança <strong>nunca</strong> tem acesso ao app do usuário. Opera pelo próprio app, aprovando ações com a biometria dela (terceira pessoa).</p>
 
   <div class="example-block">
     <div class="label">Como funciona</div>
     <div class="title">Maria nunca toca no telefone de Ana.</div>
-    <div class="body">Ana cadastra Maria como pessoa de confiança no app dela (Ana precisa estar na Fase 3). Maria também tem o CPF SEGURO instalado e também está na Fase 3. <strong>Quando Maria precisa agir em nome de Ana</strong>, ela abre o próprio app, vê "Pessoas que confiam em mim → Ana Souza", toca na ação permitida e aprova com a biometria <strong>dela mesma</strong>. O sistema valida três coisas: (1) Maria foi autorizada por Ana pra essa ação; (2) é mesmo Maria, por biometria; (3) o evento entra no cofre jurídico de Ana.</div>
+    <div class="body">Ana cadastra Maria como pessoa de confiança no app dela (Ana precisa estar na Fase 3). Maria também tem o CPF SEGURO instalado e está na Fase 3. <strong>Quando Maria precisa agir em nome de Ana</strong>, ela abre o próprio app, vê "Pessoas que confiam em mim → Ana Souza", toca na ação permitida e aprova com a biometria <strong>dela própria</strong>. O sistema valida: (1) Maria foi autorizada por Ana para essa ação; (2) é mesmo Maria, por biometria; e o evento entra no cofre jurídico de Ana.</div>
   </div>
 
   <div class="deleg-grid">
@@ -499,7 +493,7 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
       <div class="h"><div class="name">No Sou eu!</div></div>
       <div class="scope-row"><span class="l">Pessoa pode autenticar você em:</span></div>
       <div class="scope-row"><span class="l">Farmácias (pontos e fidelidade)</span><span class="v">Sim (Fase 3)</span></div>
-      <div class="scope-row"><span class="l">Programas de fidelidade (cinema, padaria)</span><span class="v">Sim (Fase 3)</span></div>
+      <div class="scope-row"><span class="l">Programas de fidelidade (supermercado, farmácia)</span><span class="v">Sim (Fase 3)</span></div>
       <div class="scope-row"><span class="l">Mercados e varejo até limite</span><span class="v">Configurável (Fase 3)</span></div>
       <div class="scope-row"><span class="l">PIX e transferências</span><span class="v">Configurável (Fase 3)</span></div>
       <div class="scope-row"><span class="l">Login bancário pessoal</span><span class="v">Nunca</span></div>
@@ -510,7 +504,7 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
       <div class="h"><div class="name">No CPF Seguro</div></div>
       <div class="scope-row"><span class="l">Pessoa pode em seu nome:</span></div>
       <div class="scope-row"><span class="l">Pausar seu CPF (geral)</span><span class="v">Sim (Fase 3)</span></div>
-      <div class="scope-row"><span class="l">Despausar seu CPF (geral)</span><span class="v">Sim (Fase 3)</span></div>
+      <div class="scope-row"><span class="l">Reativar seu CPF (geral)</span><span class="v">Sim (Fase 3)</span></div>
       <div class="scope-row"><span class="l">Pausar só categorias específicas</span><span class="v">Configurável (Fase 3)</span></div>
       <div class="scope-row"><span class="l">Pausar com 2-fatores (2 confiados aprovam juntos)</span><span class="v">Configurável (Fase 3)</span></div>
       <div class="scope-row"><span class="l">Receber alertas de tentativa de uso</span><span class="v">Sim (Fase 3)</span></div>
@@ -521,8 +515,8 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
     <div class="title">Casos de uso de altíssimo valor</div>
     <div class="text">
       <strong>1. Idoso com dificuldade tecnológica.</strong> Filhos podem operar PIX, autenticar farmácia e pausar conta em caso de golpe. Tudo registrado, todos os movimentos auditáveis. Substitui parcialmente a tutela judicial.<br><br>
-      <strong>2. Roubo de celular.</strong> O usuário perdeu o celular junto com a vida digital? A pessoa de confiança pausa o CPF em 30 segundos. O usuário recupera o celular ou liga pela conta antiga e despausa.<br><br>
-      <strong>3. Pessoa de baixa mobilidade ou saúde frágil.</strong> Cônjuge autentica em farmácias e mercados sem precisar emprestar telefone, senha ou cartão.<br><br>
+      <strong>2. Roubo de celular.</strong> O usuário perdeu o celular junto com a vida digital? A pessoa de confiança pausa o CPF em 30 segundos. O usuário recupera o celular ou liga pela conta antiga e reativa o CPF.<br><br>
+      <strong>3. Pessoa de baixa mobilidade ou saúde frágil.</strong> Cônjuge autentica em farmácias e mercados sem precisar emprestar telefone, senha ou cartão (conceito de household).<br><br>
       <strong>4. Empresário em viagem.</strong> Sócio de confiança aprova operações pré-definidas em escopo limitado durante a ausência.
     </div>
   </div>
@@ -530,7 +524,7 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
   <div class="example-block" style="background: #FEF3C7; margin-top: 14px">
     <div class="label" style="color: #92400E">Restrições e proteções</div>
     <div class="body" style="color: #78350F">
-      A pessoa de confiança <strong>nunca</strong> consegue: assinar contratos em seu nome, transferir dinheiro pra própria conta sem você aprovar, mudar suas configurações, adicionar outra pessoa de confiança, ou despausar sem 2 fatores. Cada ação dela em seu nome gera <strong>notificação push imediata</strong> pra você e fica registrada no cofre auditável. Você pode remover a pessoa de confiança a qualquer momento, sem aviso prévio.
+      A pessoa de confiança <strong>nunca</strong> consegue: assinar contratos em seu nome, transferir dinheiro para própria conta sem aprovação do titular, mudar suas configurações, adicionar outra pessoa de confiança, ou reativar sem 2 fatores. Cada ação dela em seu nome gera <strong>notificação push imediata</strong> e será registrada no cofre auditável. Usuário pode remover a pessoa de confiança a qualquer momento, sem aviso prévio, sem que ela seja notificada.
     </div>
   </div>
 
