@@ -214,8 +214,10 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
 
 <div class="tools no-print">
   <button onclick="window.print()" title="No diálogo, escolha 'Salvar como PDF'">⬇ Baixar PDF</button>
-  <button id="btnEdit" onclick="toggleEdit()">✏️ Editar</button>
-  <button class="gh" onclick="resetEdits()" title="Apaga edições e volta ao original">↺ Resetar</button>
+  <button id="btnEdit" onclick="enterEditMode()">✏️ Editar</button>
+  <button id="btnSaveEdits" onclick="saveEditsAndExit()" style="display:none;background:#15803D" title="Salva edições no navegador">💾 Salvar edições</button>
+  <button id="btnCancelEdits" class="gh" onclick="cancelEdits()" style="display:none" title="Descarta edições feitas agora">✕ Cancelar</button>
+  <button class="gh" onclick="resetEdits()" title="Apaga TODAS as edições salvas e volta ao original">↺ Resetar</button>
   <span class="status" id="status"></span>
 </div>
 
@@ -576,20 +578,7 @@ function markEditables() {
   });
 }
 
-// Save edits to localStorage
-function saveEdits() {
-  const edits = {};
-  document.querySelectorAll('[data-edit]').forEach(el => {
-    edits[el.getAttribute('data-edit')] = el.innerHTML;
-  });
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(edits));
-  dirty = false;
-  document.getElementById('btnEdit').classList.remove('dirty');
-  setStatus('💾 Salvo localmente');
-  setTimeout(() => { if (!dirty) setStatus(''); }, 2000);
-}
-
-// Restore edits from localStorage
+// Restore edits from localStorage (called on load)
 function restoreEdits() {
   const raw = localStorage.getItem(STORAGE_KEY);
   if (!raw) return false;
@@ -603,40 +592,86 @@ function restoreEdits() {
         count++;
       }
     });
-    if (count > 0) setStatus(`✓ Restauradas ${count} edições`);
     return count > 0;
   } catch (e) { return false; }
 }
 
 // Reset to original (clear localStorage + reload)
 function resetEdits() {
-  if (!confirm('Apagar todas as edições e voltar ao original?')) return;
+  if (!confirm('Apagar TODAS as edições salvas e voltar ao texto original?')) return;
   localStorage.removeItem(STORAGE_KEY);
   location.reload();
 }
 
-// Toggle edit mode
+// ─── Edit mode (snapshot-based with Save/Cancel) ──────────
 let editMode = false;
-function toggleEdit() {
-  editMode = !editMode;
-  document.body.classList.toggle('editing', editMode);
-  document.getElementById('btnEdit').classList.toggle('edit-on', editMode);
-  document.querySelectorAll('[data-edit]').forEach(el => {
-    el.contentEditable = editMode ? 'true' : 'false';
-    el.spellcheck = editMode;
-  });
-  document.getElementById('btnEdit').textContent = editMode ? '✓ Sair do modo edição' : '✏️ Editar';
-  setStatus(editMode ? 'Modo edição · clica e edita qualquer texto' : '');
+let editSnapshot = null;  // DOM state when entering edit mode
+
+function showEditButtons(editing) {
+  document.getElementById('btnEdit').style.display = editing ? 'none' : '';
+  document.getElementById('btnSaveEdits').style.display = editing ? '' : 'none';
+  document.getElementById('btnCancelEdits').style.display = editing ? '' : 'none';
 }
 
-// Debounced auto-save on input
+function enterEditMode() {
+  // Snapshot current DOM content (so Cancel can restore)
+  editSnapshot = {};
+  document.querySelectorAll('[data-edit]').forEach(el => {
+    editSnapshot[el.getAttribute('data-edit')] = el.innerHTML;
+  });
+  editMode = true;
+  document.body.classList.add('editing');
+  document.querySelectorAll('[data-edit]').forEach(el => {
+    el.contentEditable = 'true';
+    el.spellcheck = true;
+  });
+  showEditButtons(true);
+  setStatus('✏️  Clica em qualquer texto pra editar · não esquece de salvar');
+}
+
+function exitEditMode() {
+  editMode = false;
+  editSnapshot = null;
+  dirty = false;
+  document.body.classList.remove('editing');
+  document.querySelectorAll('[data-edit]').forEach(el => {
+    el.contentEditable = 'false';
+    el.spellcheck = false;
+  });
+  showEditButtons(false);
+}
+
+function saveEditsAndExit() {
+  const edits = {};
+  document.querySelectorAll('[data-edit]').forEach(el => {
+    edits[el.getAttribute('data-edit')] = el.innerHTML;
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(edits));
+  exitEditMode();
+  setStatus('✓ Edições salvas');
+  setTimeout(() => setStatus(''), 2500);
+}
+
+function cancelEdits() {
+  if (dirty && !confirm('Descartar as edições feitas agora?')) return;
+  // Restore DOM from snapshot
+  if (editSnapshot) {
+    document.querySelectorAll('[data-edit]').forEach(el => {
+      const id = el.getAttribute('data-edit');
+      if (editSnapshot[id] !== undefined) {
+        el.innerHTML = editSnapshot[id];
+      }
+    });
+  }
+  exitEditMode();
+  setStatus('Edições descartadas');
+  setTimeout(() => setStatus(''), 2000);
+}
+
+// Track unsaved changes (no auto-save, just dirty flag)
 function onInput(e) {
   if (!e.target.matches('[data-edit]')) return;
   dirty = true;
-  document.getElementById('btnEdit').classList.add('dirty');
-  setStatus('Editando…');
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(saveEdits, 800);
 }
 
 // Status text
@@ -669,11 +704,8 @@ window.addEventListener('beforeunload', (e) => {
 // Init
 document.addEventListener('DOMContentLoaded', () => {
   markEditables();
-  const restored = restoreEdits();
+  restoreEdits();
   document.addEventListener('input', onInput, true);
-  if (restored) {
-    document.getElementById('btnEdit').classList.add('dirty');
-  }
 });
 </script>
 
