@@ -200,15 +200,6 @@ body.editing [data-edit]:focus {
   outline-offset: 3px;
   box-shadow: 0 0 0 6px rgba(255, 215, 0, 0.35);
 }
-/* On areas with dark/colored backgrounds (cover, badges, callouts), keep text readable */
-body.editing .cover [data-edit]:hover,
-body.editing .cover [data-edit]:focus,
-body.editing .tier-row .lvl-badge[data-edit]:hover,
-body.editing .tier-row .lvl-badge[data-edit]:focus,
-body.editing .tier-row[data-p="2"] .lvl-badge[data-edit],
-body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
-  background: transparent !important;
-}
 @media print { body.editing [data-edit] { outline: none !important; box-shadow: none !important; background: transparent !important; } }
 </style>
 
