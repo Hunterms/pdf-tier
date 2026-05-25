@@ -212,12 +212,9 @@ body.editing .tier-row[data-p="3"] .lvl-badge[data-edit] {
 @media print { body.editing [data-edit] { outline: none !important; box-shadow: none !important; background: transparent !important; } }
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
 <div class="tools no-print">
   <button class="gh" onclick="window.close()">Fechar</button>
-  <button onclick="downloadPDF()" title="Baixa PDF idêntico ao que você vê">⬇ Baixar PDF</button>
-  <button class="gh" onclick="window.print()" title="Print do navegador">🖨 Imprimir</button>
+  <button onclick="window.print()" title="No diálogo, escolha 'Salvar como PDF'">⬇ Baixar PDF</button>
   <button id="btnEdit" onclick="toggleEdit()">✏️ Editar</button>
   <button class="gh" id="btnSave" onclick="downloadHTML()" title="Baixar HTML com edições">💾 HTML</button>
   <button class="gh" onclick="resetEdits()" title="Volta pro original">↺ Resetar</button>
@@ -685,55 +682,19 @@ function downloadHTML() {
   setTimeout(() => setStatus(''), 2000);
 }
 
-// Download as PDF using html2pdf — preserves all visuals (gradients, shadows, colors)
-function downloadPDF() {
-  if (typeof html2pdf === 'undefined') {
-    setStatus('⚠ html2pdf não carregou — usando print do browser');
-    window.print();
-    return;
+// Cleanup before print (in case user uses Ctrl+P or "Baixar PDF" button)
+window.addEventListener('beforeprint', () => {
+  if (document.body.classList.contains('editing')) {
+    document.body.classList.add('printing-was-editing');
+    document.body.classList.remove('editing');
   }
-  setStatus('Gerando PDF…');
-  // Hide toolbar temporarily
-  const toolbar = document.querySelector('.tools');
-  const wasEditing = document.body.classList.contains('editing');
-  if (wasEditing) document.body.classList.remove('editing');
-  if (toolbar) toolbar.style.display = 'none';
-
-  // Clone the body for PDF — preserves gradients, shadows, etc.
-  const ts = new Date().toISOString().slice(0,10);
-  const opts = {
-    margin: 0,
-    filename: `CPF-Seguro-Niveis-${ts}.pdf`,
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: {
-      scale: 2,                  // 2x resolution → crisp
-      useCORS: true,
-      letterRendering: true,
-      backgroundColor: '#ffffff',
-      logging: false
-    },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    pagebreak: {
-      mode: ['css', 'legacy'],
-      before: '.page'           // each .page on its own PDF page
-    }
-  };
-
-  // Take the body content excluding the toolbar
-  const target = document.body;
-  html2pdf().set(opts).from(target).save().then(() => {
-    if (toolbar) toolbar.style.display = '';
-    if (wasEditing) document.body.classList.add('editing');
-    setStatus('✓ PDF baixado');
-    setTimeout(() => setStatus(''), 2500);
-  }).catch(err => {
-    if (toolbar) toolbar.style.display = '';
-    if (wasEditing) document.body.classList.add('editing');
-    setStatus('Erro · usando print do browser');
-    console.error(err);
-    window.print();
-  });
-}
+});
+window.addEventListener('afterprint', () => {
+  if (document.body.classList.contains('printing-was-editing')) {
+    document.body.classList.add('editing');
+    document.body.classList.remove('printing-was-editing');
+  }
+});
 
 // Warn before leaving with unsaved changes
 window.addEventListener('beforeunload', (e) => {
